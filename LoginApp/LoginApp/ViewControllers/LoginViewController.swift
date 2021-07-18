@@ -14,8 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     // MARK: -Private Properties
-    private let correcLogin = "User"
-    private let correctPassword = "Password"
+    private let user = User.getUser()
     
     // MARK: -Life Cycles Methods
     override func viewDidLoad() {
@@ -40,21 +39,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? ViewController else { return }
-        welcomeVC.welcomeText = correcLogin
+        guard let tabbarController = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabbarController.viewControllers else { return }
+        for viewController in viewControllers {
+            if let welcomeVC = viewController as? UserViewController {
+                welcomeVC.nameText = user.person.name
+                welcomeVC.surnameText = user.person.surname
+            } else if let navigationVC = viewController as? UINavigationController {
+                let personInfoVC = navigationVC.topViewController as! PersonInfoViewController
+                personInfoVC.nameText = user.person.name
+                personInfoVC.surnameText = user.person.surname
+                personInfoVC.ageText = String(user.person.age)
+                personInfoVC.professionText = user.person.profession
+                personInfoVC.hobbyText = user.person.hobby
+                personInfoVC.moreInfo = user.person.moreInfo
+            }
+        }
     }
+    
     
     //MARK: -IB ACtions
     @IBAction func showCorrectLogin(_ sender: Any?) {
-        showAlert(title: "Oops!", message: "Your name is \(correcLogin) 🙄")
+        showAlert(title: "Oops!", message: "Your name is \(user.login) 🙄")
     }
     @IBAction func showCorrectPassword(_ sender: Any?) {
-        showAlert(title: "Oops!", message: "Your password is \(correctPassword) 🙄")
+        showAlert(title: "Oops!", message: "Your password is \(user.password) 🙄")
     }
 
     
     private func validateCredentials() -> Bool {
-        return loginTextField.text == correcLogin && passwordTextField.text == correctPassword
+        return loginTextField.text == user.login && passwordTextField.text == user.password
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
