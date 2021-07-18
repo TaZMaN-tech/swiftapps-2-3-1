@@ -16,10 +16,5 @@ class MoreInfoViewController: UIViewController {
         super.viewDidLoad()
         moreInfoLabel.text = moreInfoLabelText
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let personInfoVC = segue.source as? PersonInfoViewController else { return }
-//        moreInfoLabelText = personInfoVC.moreInfo
-//    }
 
 }

@@ -132,7 +132,7 @@
                             <constraint firstItem="Dr4-xY-nNe" firstAttribute="top" secondItem="GWL-9w-McF" secondAttribute="top" constant="207" id="hrk-FU-2ec"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Greeting" id="H6f-Ar-CjA"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Greeting" image="person.fill" catalog="system" id="H6f-Ar-CjA"/>
                     <navigationItem key="navigationItem" id="W02-UN-EhU"/>
                     <connections>
                         <outlet property="welcomeLabel" destination="Dr4-xY-nNe" id="yy0-PG-cjB"/>
@@ -229,10 +229,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-ha-ZuK">
                                         <rect key="frame" x="0.0" y="213.99999999999997" width="350" height="64.333333333333343"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQd-la-GU2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQd-la-GU2" userLabel="Hobby">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Hobbie">
+                                                    <fragment content="Hobby">
                                                         <attributes>
                                                             <color key="NSColor" systemColor="systemPinkColor"/>
                                                             <font key="NSFont" metaFont="systemBold" size="30"/>
@@ -291,8 +291,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVZ-ZG-CIm">
-                                <rect key="frame" x="174" y="417" width="42" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVZ-ZG-CIm">
+                                <rect key="frame" x="174.33333333333334" y="417" width="41.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -338,7 +338,7 @@
         <scene sceneID="RDf-Gb-ywE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TMQ-DV-VWx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Info" id="0Ei-O4-GZ3"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Info" image="info.circle.fill" catalog="system" id="0Ei-O4-GZ3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OnA-ZN-kTA">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
@@ -355,6 +355,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

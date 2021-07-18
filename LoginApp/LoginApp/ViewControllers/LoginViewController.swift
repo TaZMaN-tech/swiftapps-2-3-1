@@ -16,9 +16,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: -Private Properties
     private let user = User.getUser()
     
+    private let primaryColor = UIColor(
+        red: 210/255,
+        green: 109/255,
+        blue: 128/255,
+        alpha: 1
+    )
+    private let secondaryColor = UIColor(
+        red: 107/255,
+        green: 148/255,
+        blue: 230/255,
+        alpha: 1
+    )
+    
     // MARK: -Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         loginTextField.delegate = self
         passwordTextField.delegate = self
         loginTextField.returnKeyType = .next
@@ -30,12 +44,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func shouldPerformSegue(withIdentifier identitifier: String, sender: Any?) -> Bool {
         guard  identitifier == "HomeSegue" else { return true }
         
-        let isValid = validateCredentials()
-        if !isValid {
+        if !validateCredentials() {
             showAlert(title: "Invalid login or password", message: "Please, enter correct login and password")
             self.passwordTextField.text = ""
         }
-        return isValid
+        return validateCredentials()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,11 +77,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func showCorrectPassword(_ sender: Any?) {
         showAlert(title: "Oops!", message: "Your password is \(user.password) 🙄")
-    }
-
-    
-    private func validateCredentials() -> Bool {
-        return loginTextField.text == user.login && passwordTextField.text == user.password
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
@@ -100,5 +108,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true)
     }
     
+    private func validateCredentials() -> Bool {
+        return loginTextField.text == user.login && passwordTextField.text == user.password
+    }
     
+    
+}
+
+// MARK: - Set background color
+extension UIView {
+   
+    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        layer.insertSublayer(gradient, at: 0)
+    }
 }
